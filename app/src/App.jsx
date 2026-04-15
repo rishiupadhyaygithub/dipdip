@@ -8,6 +8,7 @@ import { useStore }        from './hooks/useStore.js';
 
 const Dashboard = lazy(() => import('./components/Dashboard.jsx'));
 const Decisions = lazy(() => import('./components/Decisions/index.jsx'));
+const ERPDashboard = lazy(() => import('./components/ERPDashboard.jsx'));
 const StandaloneSimulator = lazy(() => import('./components/StandaloneSimulator.jsx'));
 const Signals = lazy(() => import('./components/Signals.jsx'));
 const Memory = lazy(() => import('./components/Memory.jsx'));
@@ -112,6 +113,12 @@ export default function App() {
               addMemory={addMemory}
               toast={toast}
             />
+          </div>
+        )}
+
+        {mountedViews.has('erp') && (
+          <div className={`view-wrap${view === 'erp' ? ' active fu' : ''}`}>
+            <ERPDashboard />
           </div>
         )}
 

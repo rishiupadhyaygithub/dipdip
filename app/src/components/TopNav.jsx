@@ -3,6 +3,7 @@ import { initials } from '../lib/utils.js';
 const TABS = [
   { id: 'dashboard',  label: 'Dashboard' },
   { id: 'decisions',  label: 'Decisions', badge: 'pending' },
+  { id: 'erp',        label: 'ERP & CRM', badge: 'erpalerts', alert: true },
   { id: 'simulator',  label: 'Simulator' },
   { id: 'signals',    label: 'Signals',   badge: 'signals', alert: true },
   { id: 'memory',     label: 'Memory' },
@@ -13,10 +14,12 @@ const TABS = [
 export default function TopNav({ view, setView, user, aiLive, db, onNewDecision }) {
   const pendingCount = db.decisions.filter(d => d.status === 'pending').length;
   const signalCount  = db.signals.filter(s => s.urg).length;
+  const ERP_HIGH_ALERTS = 3; // SKU-123 price pressure, SKU-078 demand spike, DMart blocked
 
   function badge(tab) {
     if (tab.badge === 'pending') return pendingCount;
     if (tab.badge === 'signals') return signalCount;
+    if (tab.badge === 'erpalerts') return ERP_HIGH_ALERTS;
     return 0;
   }
 

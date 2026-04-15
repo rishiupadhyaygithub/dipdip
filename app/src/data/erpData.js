@@ -1,0 +1,198 @@
+// ══════════════════════════════════════
+// DUMMY ERP + CRM — Apex Retail India
+// FY 2025-26 · Read-only mirror
+// ══════════════════════════════════════
+
+export const ERP = {
+  meta: {
+    company: 'Apex Retail India',
+    gstin: '27AADCA1234F1Z5',
+    period: 'FY 2025-26',
+    last_sync: '10 min ago',
+    sources: ['Tally Prime', 'Google Sheets', 'Shopify'],
+  },
+
+  // ── SKUs ──────────────────────────────
+  skus: [
+    {
+      id: 'SKU-123', name: 'Premium Basmati Rice 5kg', cat: 'Staples',
+      mrp: 420, cost: 282, margin: 32.9,
+      sales_units: [1240, 1380, 1510, 1420, 1190, 1080], // Oct→Mar
+      sales_rev:   [520800, 579600, 634200, 596400, 499800, 453600],
+      inv: { north: 2400, south: 1800, east: 1200, west: 890 },
+      cover: { north: 58, south: 44, east: 38, west: 31 },
+      reorder: 1000,
+      trend: 'down', signal_id: 's1',
+      alert: 'Competitor -30% in Mumbai · West below reorder level',
+      alert_sev: 'high',
+    },
+    {
+      id: 'SKU-045', name: 'Sunflower Oil 1L', cat: 'Edible Oils',
+      mrp: 148, cost: 98, margin: 33.8,
+      sales_units: [4200, 4380, 4620, 4800, 5100, 5380],
+      sales_rev:   [621600, 648240, 683760, 710400, 754800, 796240],
+      inv: { north: 8400, south: 6200, east: 5100, west: 4800 },
+      cover: { north: 61, south: 65, east: 55, west: 42 },
+      reorder: 2000,
+      trend: 'up', signal_id: null,
+      alert: null, alert_sev: null,
+    },
+    {
+      id: 'SKU-078', name: 'Organic Atta 10kg', cat: 'Staples',
+      mrp: 680, cost: 440, margin: 35.3,
+      sales_units: [820, 880, 920, 980, 1140, 1540],
+      sales_rev:   [557600, 598400, 625600, 666400, 775200, 1047200],
+      inv: { north: 1200, south: 890, east: 2100, west: 680 },
+      cover: { north: 27, south: 19, east: 41, west: 13 },
+      reorder: 800,
+      trend: 'spike', signal_id: 's2',
+      alert: 'East region +34% above forecast · Root cause unknown',
+      alert_sev: 'high',
+    },
+    {
+      id: 'SKU-089', name: 'Refined Oil 5L', cat: 'Edible Oils',
+      mrp: 695, cost: 498, margin: 28.3,
+      sales_units: [1420, 1380, 1100, 680, 590, 542],
+      sales_rev:   [986900, 958100, 764500, 472400, 410050, 376490],
+      inv: { north: 3200, south: 2100, east: 1800, west: 1400 },
+      cover: { north: 89, south: 76, east: 72, west: 61 },
+      reorder: 500,
+      trend: 'down', signal_id: null,
+      alert: 'Permanent anchor post Aug-24 price cut · Overstocked North',
+      alert_sev: 'med',
+    },
+    {
+      id: 'SKU-200', name: 'Toor Dal 1kg', cat: 'Pulses',
+      mrp: 180, cost: 118, margin: 34.4,
+      sales_units: [3100, 2900, 3400, 3800, 3600, 3200],
+      sales_rev:   [558000, 522000, 612000, 684000, 648000, 576000],
+      inv: { north: 4800, south: 3200, east: 2800, west: 2400 },
+      cover: { north: 45, south: 38, east: 42, west: 36 },
+      reorder: 1500,
+      trend: 'stable', signal_id: null,
+      alert: null, alert_sev: null,
+    },
+    {
+      id: 'SKU-301', name: 'Coconut Oil 500ml', cat: 'Edible Oils',
+      mrp: 220, cost: 138, margin: 37.3,
+      sales_units: [1800, 2100, 2400, 2600, 2900, 3200],
+      sales_rev:   [396000, 462000, 528000, 572000, 638000, 704000],
+      inv: { north: 800, south: 4200, east: 600, west: 400 },
+      cover: { north: 14, south: 39, east: 10, west: 6 },
+      reorder: 600,
+      trend: 'up', signal_id: null,
+      alert: 'North/West/East critically low · South well-stocked',
+      alert_sev: 'med',
+    },
+    {
+      id: 'SKU-412', name: 'Whole Wheat Biscuits 400g', cat: 'Snacks',
+      mrp: 85, cost: 58, margin: 31.8,
+      sales_units: [6200, 5800, 6100, 5600, 5200, 4900],
+      sales_rev:   [527000, 493000, 518500, 476000, 442000, 416500],
+      inv: { north: 9800, south: 7200, east: 6400, west: 5800 },
+      cover: { north: 58, south: 45, east: 48, west: 43 },
+      reorder: 3000,
+      trend: 'down', signal_id: null,
+      alert: 'Slow decline · Marketing spend down 18%',
+      alert_sev: 'low',
+    },
+    {
+      id: 'SKU-501', name: 'Organic Honey 500g', cat: 'Premium',
+      mrp: 380, cost: 220, margin: 42.1,
+      sales_units: [280, 320, 380, 420, 490, 580],
+      sales_rev:   [106400, 121600, 144400, 159600, 186200, 220400],
+      inv: { north: 480, south: 320, east: 240, west: 180 },
+      cover: { north: 25, south: 18, east: 16, west: 12 },
+      reorder: 150,
+      trend: 'up', signal_id: null,
+      alert: 'Premium segment growing · West/East low stock',
+      alert_sev: 'low',
+    },
+  ],
+
+  // ── P&L ──────────────────────────────
+  pnl: {
+    months: ['Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar'],
+    revenue:      [48200000, 51800000, 56400000, 52900000, 49600000, 53800000],
+    cogs:         [31200000, 33500000, 36400000, 34200000, 32100000, 34800000],
+    gross_margin: [17000000, 18300000, 20000000, 18700000, 17500000, 19000000],
+    gm_pct:       [35.3, 35.3, 35.5, 35.3, 35.3, 35.3],
+    opex:         [8200000, 8700000, 9200000, 8800000, 8500000, 8900000],
+    ebitda:       [8800000, 9600000, 10800000, 9900000, 9000000, 10100000],
+    ebitda_pct:   [18.3, 18.5, 19.1, 18.7, 18.1, 18.8],
+  },
+
+  // ── Inventory Summary ─────────────────
+  inv_summary: {
+    total_value_cr: 4.82,
+    slow_movers: ['SKU-089', 'SKU-412'],
+    critically_low: ['SKU-078-west', 'SKU-301-north'],
+    overstock: ['SKU-089-north'],
+    pending_pos: 3,
+    po_value_lac: 18.4,
+  },
+
+  // ── Distributors ─────────────────────
+  distributors: [
+    { id: 'D01', name: 'Krishna Traders', city: 'Mumbai', region: 'West',
+      rev_lac: 48.2, target_lac: 50, achievement: 96.4,
+      top_sku: 'SKU-045', orders_mtd: 24, dues_days: 18, status: 'active',
+      yoy_growth: 12.4 },
+    { id: 'D02', name: 'Sharma Distributors', city: 'Delhi', region: 'North',
+      rev_lac: 38.6, target_lac: 40, achievement: 96.5,
+      top_sku: 'SKU-123', orders_mtd: 19, dues_days: 22, status: 'active',
+      yoy_growth: 8.2 },
+    { id: 'D03', name: 'East Coast Supplies', city: 'Kolkata', region: 'East',
+      rev_lac: 22.1, target_lac: 25, achievement: 88.4,
+      top_sku: 'SKU-078', orders_mtd: 14, dues_days: 31, status: 'watch',
+      yoy_growth: 34.8 }, // spike from SKU-078
+    { id: 'D04', name: 'South Star Trading', city: 'Chennai', region: 'South',
+      rev_lac: 31.4, target_lac: 30, achievement: 104.7,
+      top_sku: 'SKU-301', orders_mtd: 21, dues_days: 14, status: 'active',
+      yoy_growth: 22.1 },
+    { id: 'D05', name: 'Pune Fresh', city: 'Pune', region: 'West',
+      rev_lac: 18.0, target_lac: 20, achievement: 90.0,
+      top_sku: 'SKU-045', orders_mtd: 12, dues_days: 26, status: 'new',
+      yoy_growth: null }, // new distributor
+    { id: 'D06', name: 'Gujarat Mart', city: 'Ahmedabad', region: 'West',
+      rev_lac: 12.3, target_lac: 18, achievement: 68.3,
+      top_sku: 'SKU-200', orders_mtd: 8, dues_days: 44, status: 'at-risk',
+      yoy_growth: -4.2 },
+  ],
+
+  // ── CRM Pipeline ─────────────────────
+  crm_pipeline: [
+    { id: 'CRM-001', name: 'BigBasket National Tie-up', stage: 'Proposal',
+      value_cr: 2.4, probability: 35, owner: 'Ananya Sharma',
+      next_action: 'Send revised pricing deck', due: '18 Apr',
+      skus: ['SKU-045', 'SKU-123', 'SKU-200'], age_days: 42 },
+    { id: 'CRM-002', name: 'Reliance Fresh — Pan India Expansion', stage: 'Negotiation',
+      value_cr: 1.8, probability: 65, owner: 'Karan Verma',
+      next_action: 'Finalise SLA and credit terms', due: '22 Apr',
+      skus: ['SKU-501', 'SKU-301'], age_days: 28 },
+    { id: 'CRM-003', name: 'DMart West Region SKU Expansion', stage: 'Qualified',
+      value_cr: 3.2, probability: 20, owner: 'Rishi Upadhyay',
+      next_action: 'Decision — pricing decision needed first', due: '25 Apr',
+      skus: ['SKU-123'], age_days: 15,
+      blocked_by: 'd1' }, // blocked by SKU-123 pricing decision
+    { id: 'CRM-004', name: 'Amazon Fresh Listing — Honey & Premium', stage: 'Closed Won',
+      value_cr: 0.9, probability: 100, owner: 'Priya Mehta',
+      next_action: 'Onboarding in progress', due: '30 Apr',
+      skus: ['SKU-501'], age_days: 62 },
+    { id: 'CRM-005', name: 'Lulu Hypermarket UAE Export', stage: 'Lost',
+      value_cr: 1.2, probability: 0, owner: 'Ananya Sharma',
+      next_action: '—', due: '—',
+      skus: ['SKU-123', 'SKU-045'], age_days: 90,
+      loss_reason: 'Price not competitive · Competitor B won on 15% lower rate' },
+  ],
+
+  // ── Alerts Summary ────────────────────
+  alerts: [
+    { sku: 'SKU-123', type: 'PRICE_PRESSURE', sev: 'high', msg: 'Competitor A -30% Mumbai/Pune · 48h response window', signal_id: 's1' },
+    { sku: 'SKU-078', type: 'DEMAND_SPIKE',   sev: 'high', msg: 'East demand +34% above forecast · Investigate', signal_id: 's2' },
+    { sku: 'SKU-089', type: 'SLOW_MOVER',     sev: 'med',  msg: 'Revenue -46% YoY · Permanent anchor confirmed', signal_id: null },
+    { sku: 'SKU-301', type: 'LOW_STOCK',      sev: 'med',  msg: 'North/West/East <14 days cover', signal_id: null },
+    { sku: 'SKU-123', type: 'CRM_BLOCKED',    sev: 'high', msg: 'DMart deal (₹3.2Cr) blocked — pricing decision pending', signal_id: null },
+    { sku: 'D06',     type: 'DISTRIBUTOR',    sev: 'low',  msg: 'Gujarat Mart 68% achievement · 44 days outstanding', signal_id: null },
+  ],
+};
